@@ -16,3 +16,13 @@ end
 
 
 r,g,b = extractRbg("el-capitan.png");
+
+
+allColors = hcat(g, b, r);
+image2 = reshape(allColors, 360, 640, 3);
+subplot(1,2,1);
+imshow(imgE_C);
+subplot(1,2,2);
+imshow(image2);
+axis("off");
+suptitle("Original RBG Image and GBR Version");
