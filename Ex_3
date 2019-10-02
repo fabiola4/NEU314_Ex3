@@ -11,6 +11,7 @@ function extractRbg(filename)
     imgBlue = imgFunction[:, :, 2]
     imgGreen = imgFunction[:, :, 3]
     return imgRed, imgBlue, imgGreen
+    println("Reset with git reset --mixed")
 end
 
 
