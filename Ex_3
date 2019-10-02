@@ -1,0 +1,17 @@
+using PyPlot;
+imgE_C = imread("el-capitan.png");
+imshow(imgE_C);
+size(imgE_C);
+
+
+function extractRbg(filename)
+    imgFunction = imread(filename)
+    imshow(imgFunction)
+    imgRed = imgFunction[:, :, 1]
+    imgBlue = imgFunction[:, :, 2]
+    imgGreen = imgFunction[:, :, 3]
+    return imgRed, imgBlue, imgGreen
+end
+
+
+r,g,b = extractRbg("el-capitan.png");
