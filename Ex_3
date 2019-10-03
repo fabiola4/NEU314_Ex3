@@ -48,10 +48,10 @@ function circularRotation(filename, numPixels)
     imgFunction2= imread(filename) ## take image name
     redImg = imgFunction2[:,:,1] ## isolate red channel (1st dimension)
     newImg = circshift(redImg, (numPixels, 0)) ## do 'numPixels' rotation
-    subplot(1,2,1); ## plot original version
+    subplot(1,2,1); ## display original version
     imshow(imgFunction2);
     axis("off");
-    subplot(1,2,2); ## plot rotated version
+    subplot(1,2,2); ## display rotated version
     imshow(newImg);
     axis("off");
     suptitle("Original RBG Image and Rotated R Channel Version"); ## title
