@@ -5,6 +5,7 @@ Loading, displaying, and describing image size
 using PyPlot;
 imgE_C = imread("el-capitan.png"); ## load
 imshow(imgE_C); ## display
+axis("off");
 size(imgE_C); ## image size
 
 
