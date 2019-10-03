@@ -1,28 +1,59 @@
+"""
+Loading, displaying, and describing image size
+"""
+
 using PyPlot;
-imgE_C = imread("el-capitan.png");
-imshow(imgE_C);
-size(imgE_C);
+imgE_C = imread("el-capitan.png"); ## load
+imshow(imgE_C); ## display
+size(imgE_C); ## image size
 
 
-function extractRbg(filename)
+
+"""
+Function to extract an image's Red, Green, and Blue channels
+"""
+
+function extractRGB(filename)
     imgFunction = imread(filename)
     imshow(imgFunction)
-    imgRed = imgFunction[:, :, 1]
-    imgBlue = imgFunction[:, :, 2]
-    imgGreen = imgFunction[:, :, 3]
-    return imgRed, imgBlue, imgGreen
+    axis("off");
+    imgRed = imgFunction[:, :, 1] ## red channel
+    imgBlue = imgFunction[:, :, 3] ## blue channel
+    imgGreen = imgFunction[:, :, 2] ## green channel
+    return imgRed,imgGreen, imgBlue
     println("Reset with git reset --mixed")
 end
 
 
-r,g,b = extractRbg("el-capitan.png");
-
-
-allColors = hcat(g, b, r);
-image2 = reshape(allColors, 360, 640, 3);
-subplot(1,2,1);
+"""
+Sequence of code to display original image and
+create/display 'GBR' version
+"""
+r,g,b = extractRGB("el-capitan.png");
+allColors = hcat(g, b, r); ## concatenate three 360x640 matrices
+image2 = reshape(allColors, 360, 640, 3); ## reshape to build G, B, R 3D matrix
+subplot(1,2,1); ## display original image
 imshow(imgE_C);
-subplot(1,2,2);
+axis("off");
+subplot(1,2,2); ## display new version
 imshow(image2);
 axis("off");
-suptitle("Original RBG Image and GBR Version");
+suptitle("Original RBG Image and 'GBR' Version"); ## title
+
+
+"""
+function to rotate image's red channel by numPixels pixels
+"""
+function circularRotation(filename, numPixels)
+    imgFunction2= imread(filename) ## take image name
+    redImg = imgFunction2[:,:,1] ## isolate red channel (1st dimension)
+    newImg = circshift(redImg, (numPixels, 0)) ## do 'numPixels' rotation
+    subplot(1,2,1); ## plot original version
+    imshow(imgFunction2);
+    axis("off");
+    subplot(1,2,2); ## plot rotated version
+    imshow(newImg);
+    axis("off");
+    suptitle("Original RBG Image and Rotated R Channel Version"); ## title
+    return newImg ## return shifted image
+end
