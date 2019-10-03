@@ -2,11 +2,11 @@
 Loading, displaying, and describing image size
 """
 
-using PyPlot;
-imgE_C = imread("el-capitan.png"); ## load
-imshow(imgE_C); ## display
-axis("off");
-size(imgE_C); ## image size
+using PyPlot
+imgE_C = imread("el-capitan.png") ## load
+imshow(imgE_C) ## display
+axis("off")
+size(imgE_C)
 
 
 
@@ -17,7 +17,7 @@ Function to extract an image's Red, Green, and Blue channels
 function extractRGB(filename)
     imgFunction = imread(filename)
     imshow(imgFunction)
-    axis("off");
+    axis("off")
     imgRed = imgFunction[:, :, 1] ## red channel
     imgBlue = imgFunction[:, :, 3] ## blue channel
     imgGreen = imgFunction[:, :, 2] ## green channel
@@ -30,16 +30,16 @@ end
 Sequence of code to display original image and
 create/display 'GBR' version
 """
-r,g,b = extractRGB("el-capitan.png");
-allColors = hcat(g, b, r); ## concatenate three 360x640 matrices
-image2 = reshape(allColors, 360, 640, 3); ## reshape to build G, B, R 3D matrix
-subplot(1,2,1); ## display original image
-imshow(imgE_C);
-axis("off");
-subplot(1,2,2); ## display new version
-imshow(image2);
-axis("off");
-suptitle("Original RBG Image and 'GBR' Version"); ## title
+r,g,b = extractRGB("el-capitan.png")
+allColors = hcat(g, b, r) ## concatenate three 360x640 matrices
+image2 = reshape(allColors, 360, 640, 3) ## reshape to build G, B, R 3D matrix
+subplot(1,2,1) ## display original image
+imshow(imgE_C)
+axis("off")
+subplot(1,2,2) ## display new version
+imshow(image2)
+axis("off")
+suptitle("Original RBG Image and 'GBR' Version") ## title
 
 
 """
@@ -49,12 +49,12 @@ function circularRotation(filename, numPixels)
     imgFunction2= imread(filename) ## take image name
     redImg = imgFunction2[:,:,1] ## isolate red channel (1st dimension)
     newImg = circshift(redImg, (numPixels, 0)) ## do 'numPixels' rotation
-    subplot(1,2,1); ## display original version
-    imshow(imgFunction2);
-    axis("off");
-    subplot(1,2,2); ## display rotated version
-    imshow(newImg);
-    axis("off");
-    suptitle("Original RBG Image and Rotated R Channel Version"); ## title
+    subplot(1,2,1) ## display original version
+    imshow(imgFunction2)
+    axis("off")
+    subplot(1,2,2) ## display rotated version
+    imshow(newImg)
+    axis("off")
+    suptitle("Original RBG Image and Rotated R Channel Version") ## title
     return newImg ## return shifted image
 end
