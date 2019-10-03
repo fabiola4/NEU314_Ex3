@@ -21,8 +21,8 @@ function extractRGB(filename)
     imgRed = imgFunction[:, :, 1] ## red channel
     imgBlue = imgFunction[:, :, 3] ## blue channel
     imgGreen = imgFunction[:, :, 2] ## green channel
-    return imgRed,imgGreen, imgBlue
     println("Reset with git reset --mixed")
+    return imgRed,imgGreen, imgBlue
 end
 
 
